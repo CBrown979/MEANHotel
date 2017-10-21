@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express(); //initial express to create the application
 var path = require('path');
+var bodyParser = require('body-parser');
 
 var routes = require('./api/routes');
 
@@ -31,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));//when express recvs req
 //the function in the route takes 2 parameters:
 //request (req) object: contains data about the incoming request
 //response (res) object: contains data & methods relating to a response
+
+app.use(bodyParser.urlencoded({ extended : false}));
 
 app.use('/api', routes); //the '/' (alone) means that express will look inside the routes file for any route - can be changed to look api & express will only use routes with paths that start with api 
 //test the get request in browswer by entering: localhost:3000/api/json

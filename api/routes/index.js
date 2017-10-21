@@ -20,6 +20,10 @@ router
  .route('/hotels/:hotelId') //the :hotelID can be accessed by the controller
  .get(ctrlHotels.hotelsGetOne)
 
+router
+ .route('/hotels/new')
+ .post(ctrlHotels.hotelsAddOne);
+
 //old version below - from vid 11 and prior only - before controller file intro  
 //   .get(function(req, res){//inside method is the callback function that runs when the route is called
 //      console.log("GET the json");
