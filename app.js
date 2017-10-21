@@ -4,12 +4,16 @@ var path = require('path');
 
 app.set('port', 3000);
 
-app.get('/', function(req, res){
-  console.log("GET the homepage");
-  res
-    .status(200)
-    .sendFile(path.join(__dirname, 'public', 'index.html'));//passing in filenames as strings avoids potential syntax issues w/ other directory structures on other operating systems
-});
+app.use(express.static(path.join(__dirname, 'public')));//when express recvs request for a root, it will chk if that root is matched by any files in public folder - if match found, it will deliver that file directly to the browser w/o adding in extra routes
+
+//app.use('/public', express.static(path.join(__dirname, 'public'))); - optional for subset of routes
+
+// app.get('/', function(req, res){//this route is outdated now that line 7 was added
+//   console.log("GET the homepage");
+//   res
+//     .status(200)
+//     .sendFile(path.join(__dirname, 'public', 'index.html'));//passing in filenames as strings avoids potential syntax issues w/ other directory structures on other operating systems
+// });
 //the function in the route takes 2 parameters:
 //request (req) object: contains data about the incoming request
 //response (res) object: contains data & methods relating to a response
