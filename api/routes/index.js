@@ -14,6 +14,12 @@ router
   .route('/hotels')
   .get(ctrlHotels.hotelsGetAll);//this is all that is needed to map a controller to a route
 
+router 
+ //express will match any routes or URLs with /hotels or /somethingElse, to this route
+ //to add a parameter in express use : 
+ .route('/hotels/:hotelId') //the :hotelID can be accessed by the controller
+ .get(ctrlHotels.hotelsGetOne)
+
 //old version below - from vid 11 and prior only - before controller file intro  
 //   .get(function(req, res){//inside method is the callback function that runs when the route is called
 //      console.log("GET the json");
@@ -30,4 +36,7 @@ router
 //         .status(200)
 //         .json( {"jsonData" : "POST received"} );
 //     });
+//old version above
+
+
 module.exports = router; //export the instantiated router to access it from the app.js file

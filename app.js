@@ -56,6 +56,10 @@ var server = app.listen(app.get('port'), function(){
  console.log('Magic happens on port ' + port);    
 });
 
+//Recap for Vid13 - we learned how the URL parameters are used to take info from a specified path in the URL that is defined in the routes; and then we can use that info in the controller - this is normally used to query data
+
+//below is part of earlier videos
+
 //console.log('Me first!'); //validates that app.listen is asynchronous
 
 //recap of above - we've learned how to:
