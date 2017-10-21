@@ -2,6 +2,8 @@ var express = require('express');
 var app = express(); //initial express to create the application
 var path = require('path');
 
+var routes = require('./routes');
+
 app.set('port', 3000);
 
 app.use(function(req, res, next){
@@ -30,19 +32,24 @@ app.use(express.static(path.join(__dirname, 'public')));//when express recvs req
 //request (req) object: contains data about the incoming request
 //response (res) object: contains data & methods relating to a response
 
-app.get('/json', function(req, res){
-    console.log("GET the json");
-    res
-      .status(200)
-      .json({"jsonData" : true});
-  });
+app.use('/api', routes); //the '/' (alone) means that express will look inside the routes file for any route - can be changed to look api & express will only use routes with paths that start with api 
+//test the get request in browswer by entering: localhost:3000/api/json
+//to test post requests use postman
 
-app.get('/file', function(req, res){
-    console.log("GET the file");
-    res
-      .status(200)
-      .sendFile(path.join(__dirname, 'app.js')); //.join allows multiple parameters to create a file path
-});
+//INSTEAD of below, for video 12, we will create controllers to power the logic behind the routes
+// app.get('/json', function(req, res){
+//     console.log("GET the json");
+//     res
+//       .status(200)
+//       .json({"jsonData" : true});
+//   });
+
+// app.get('/file', function(req, res){
+//     console.log("GET the file");
+//     res
+//       .status(200)
+//       .sendFile(path.join(__dirname, 'app.js')); //.join allows multiple parameters to create a file path
+// });
 
 var server = app.listen(app.get('port'), function(){
  var port = server.address().port;
