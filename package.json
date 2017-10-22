@@ -4,7 +4,7 @@
   "description": "MEAN stack application",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js", //can also type npm start from command line
+    "start": "node app.js", //unable to get nodemon to work -- error:[nodemon] Failed to parse config /Users/wjones979/Projects/MEAN/package.json
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
