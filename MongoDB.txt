@@ -1,0 +1,78 @@
+> show collections
+> show dbs
+admin     0.000GB
+local     0.000GB
+meantest  0.000GB
+> show collections
+> db.createCollection("tech")
+{ "ok" : 1 }
+> show collections
+tech
+> db.tech.insert(
+... {
+... name : "MongoDB",
+... role : "Database"
+... }
+... )
+WriteResult({ "nInserted" : 1 })
+> db.tech.find()
+{ "_id" : ObjectId("59ec773d272d59d9c22d9544"), "name" :"MongoDB", "role" : "Database" }
+> db.tech.find().pretty(){
+        "_id" : ObjectId("59ec773d272d59d9c22d9544"),
+        "name" : "MongoDB",
+        "role" : "Database"
+}
+> db.tech.insert(... [
+...   {
+...     name : "Express",
+...     role : "Web application server"
+... },
+... {
+... name : "Angular",
+... role : "Front-end framework"
+... },
+... {
+... name : "Node.js",
+... role : "Platform"
+... }
+... ]
+... )
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 3,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.tech.find()
+{ "_id" : ObjectId("59ec773d272d59d9c22d9544"), "name" :"MongoDB", "role" : "Database" }
+{ "_id" : ObjectId("59ec793b272d59d9c22d9545"), "name" :"Express", "role" : "Web application server" }
+{ "_id" : ObjectId("59ec793b272d59d9c22d9546"), "name" :"Angular", "role" : "Front-end framework" }
+{ "_id" : ObjectId("59ec793b272d59d9c22d9547"), "name" :"Node.js", "role" : "Platform" }
+> db.tech.find().pretty()
+{
+        "_id" : ObjectId("59ec773d272d59d9c22d9544"),
+        "name" : "MongoDB",
+        "role" : "Database"
+}
+{
+        "_id" : ObjectId("59ec793b272d59d9c22d9545"),
+        "name" : "Express",
+        "role" : "Web application server"
+}
+{
+        "_id" : ObjectId("59ec793b272d59d9c22d9546"),
+        "name" : "Angular",
+        "role" : "Front-end framework"
+}
+{
+        "_id" : ObjectId("59ec793b272d59d9c22d9547"),
+        "name" : "Node.js",
+        "role" : "Platform"
+}
+> exit
+bye
+Candices-MBP:MEAN wjones979$
