@@ -1,6 +1,6 @@
 [
     {
-    "PostID" : 1,
+    "PostID" : 1, //MongoDB will create id properties ("_id : long Alpha/Num Object#") & unique object keys - no 2 ids will be the same
     "Title" : "My first post",
     "Content" : "Some content",
     "Comments" : [
